@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import {
+  MatchDetails,
+  MatchNav,
+  Standings,
+} from 'sports-react-blessed-components';
 import { getDivisionStandings, getMatches } from '../../nhl';
 
 class Dashboard extends Component {
@@ -55,6 +60,68 @@ class Dashboard extends Component {
     });
   }
 
+  get matchNav() {
+    const { matches, selectedMatchIndex } = this.state;
+    if (!matches) {
+      return <box content="Loading..." />;
+    }
+
+    return (
+      <element>
+        <element height={2} top={1}>
+          <MatchNav
+            matches={matches.completedAndLiveMatches}
+            selectedMatchIndex={selectedMatchIndex}
+          />
+        </element>
+        <element height={2} top={4}>
+          <MatchNav matches={matches.scheduledMatches} />
+        </element>
+      </element>
+    );
+  }
+
+  get matchDetails() {
+    const { matches } = this.state;
+    if (!matches) {
+      return <box content="Loading..." />;
+    }
+
+    const { selectedMatchIndex } = this.state;
+    const currentMatch = matches.completedAndLiveMatches[selectedMatchIndex];
+
+    if (!currentMatch) {
+      return null;
+    }
+
+    return <MatchDetails match={currentMatch} />;
+  }
+
+  get standings() {
+    const { standings } = this.state;
+    if (!standings) {
+      return <box content="Loading..." />;
+    }
+
+    const divisionStandingsWidth = 18;
+
+    const divisionStandings = standings.map((division, i) => (
+      <element
+        key={`division-standings-container-${division.id}`}
+        width={divisionStandingsWidth}
+        left={i * divisionStandingsWidth}
+      >
+        <Standings name={division.name} standings={division.standings} />
+      </element>
+    ));
+
+    return (
+      <box left="center" width={divisionStandingsWidth * 4}>
+        {divisionStandings}
+      </box>
+    );
+  }
+
   async updateMatches() {
     try {
       const matches = await getMatches();
@@ -81,6 +148,7 @@ class Dashboard extends Component {
     return (
       <element>
         <element height={matchNavHeight} top={0}>
+          {this.matchNav}
         </element>
         <line
           top={matchNavHeight + 1}
@@ -90,6 +158,7 @@ class Dashboard extends Component {
           width="100%"
         />
         <element width="100%" height="100%-20" top={matchNavHeight + 2}>
+          {this.matchDetails}
         </element>
         <line
           top="100%-11"
@@ -99,6 +168,7 @@ class Dashboard extends Component {
           width="100%"
         />
         <element width="100%" height={10} top="100%-10">
+          {this.standings}
         </element>
       </element>
     );
