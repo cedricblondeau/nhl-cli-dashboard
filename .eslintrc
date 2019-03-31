@@ -1,0 +1,20 @@
+{
+  extends: ['airbnb', 'prettier'],
+  plugins: ['prettier'],
+  rules: {
+    'prettier/prettier': [
+      'error',
+      {
+        singleQuote: true,
+        trailingComma: 'all',
+      },
+    ],
+    eqeqeq: ['error', 'always'],
+    object-curly-spacing: ['error', 'always'],
+    'react/forbid-prop-types': 0
+  },
+  env: {
+    "node": true,
+    "jest": true
+  }
+}

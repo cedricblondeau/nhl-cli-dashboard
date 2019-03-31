@@ -3,5 +3,31 @@
   "version": "0.0.1",
   "main": "src/index.jsx",
   "author": "Cédric Blondeau",
-  "license": "MIT"
+  "license": "MIT",
+  "engines": {
+    "node": ">=6"
+  },
+  "scripts": {
+    "start": "babel-node ./src/index.jsx",
+    "lint": "eslint 'src/**/*.jsx' 'src/**/*.js'",
+    "prepublish": "yarn build",
+    "build": "babel src --out-dir dist"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.3.4",
+    "@babel/node": "^7.2.2",
+    "@babel/preset-env": "^7.3.4",
+    "@babel/preset-react": "^7.0.0",
+    "eslint": "^5.15.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-prettier": "^4.1.0",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-prettier": "^3.0.1",
+    "eslint-plugin-react": "^7.12.4",
+    "prettier": "^1.16.4"
+  }
 }
