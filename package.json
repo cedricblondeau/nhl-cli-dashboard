@@ -15,8 +15,13 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "blessed": "^0.1.81",
     "chalk": "^2.4.2",
-    "moment": "^2.24.0"
+    "moment": "^2.24.0",
+    "prop-types": "^15.7.2",
+    "react": "^16.8.6",
+    "react-blessed": "^0.5.0",
+    "sports-react-blessed-components": "^0.0.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
