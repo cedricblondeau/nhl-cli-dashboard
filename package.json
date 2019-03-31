@@ -1,8 +1,12 @@
 {
   "name": "nhl-cli-dashboard",
   "version": "0.0.1",
-  "main": "src/index.jsx",
+  "main": "dist/index.js",
+  "module": "src/index.jsx",
   "author": "Cédric Blondeau",
+  "bin": {
+		"nhl-cli-dashboard": "bin/nhl-cli-dashboard"
+	},
   "license": "MIT",
   "engines": {
     "node": ">=6"
