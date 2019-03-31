@@ -1,0 +1,7 @@
+{
+  "name": "nhl-cli-dashboard",
+  "version": "0.0.1",
+  "main": "src/index.jsx",
+  "author": "Cédric Blondeau",
+  "license": "MIT"
+}
