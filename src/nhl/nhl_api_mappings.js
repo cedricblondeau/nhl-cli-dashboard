@@ -31,9 +31,7 @@ const NHLAPIGameToMatch = game => {
       .map(scoringPlay => {
         return {
           type: chalk.black.bgWhite(scoringPlay.result.event),
-          time: `${scoringPlay.about.ordinalNum} ${
-            scoringPlay.about.periodTime
-          }`,
+          time: `${scoringPlay.about.ordinalNum} ${scoringPlay.about.periodTime}`,
           text: '',
         };
       });
@@ -47,9 +45,7 @@ const NHLAPIGameToMatch = game => {
       return '';
     }
 
-    return `${lineScore.currentPeriodOrdinal} - ${
-      lineScore.currentPeriodTimeRemaining
-    }`;
+    return `${lineScore.currentPeriodOrdinal} - ${lineScore.currentPeriodTimeRemaining}`;
   };
 
   return {
