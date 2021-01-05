@@ -18,7 +18,7 @@
     "build": "babel src --out-dir dist"
   },
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "blessed": "^0.1.81",
     "chalk": "^2.4.2",
     "moment": "^2.24.0",
